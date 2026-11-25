@@ -48,10 +48,6 @@ def sync_shots(data_dir: str | pathlib.Path = "data") -> list[str]:
         print("device has no shot history yet")
         return []
     
-    if index_path.exists() and index_path.read_bytes() == new_index:
-        print("index unchanged - nothing to do")
-        return []
-    
     device_ids = index_shot_ids(new_index)
     local_ids = {p.stem for p in slog_dir.glob("*.slog")}
     missing = sorted(device_ids -local_ids)
@@ -77,6 +73,4 @@ def sync_shots(data_dir: str | pathlib.Path = "data") -> list[str]:
 if __name__ == "__main__":
     new = sync_shots()
     print(f"done — {len(new)} new shot(s)")
-
-
-
+    

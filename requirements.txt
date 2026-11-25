@@ -16,3 +16,4 @@ websockets==16.0
 yarg==0.1.10
 zope.event==6.2
 zope.interface==8.5
+notebook
